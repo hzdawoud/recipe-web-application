@@ -9,14 +9,13 @@ public class Recipe {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String description;
     private Integer prepTime;
     private Integer cookTime;
     private Integer servings;
     private String source;
     private String url;
-    private String drirections;
+    private String directions;
 
     @OneToOne(fetch = FetchType.EAGER)
     private UnitOfMeasure unitOfMeasure;
@@ -27,9 +26,17 @@ public class Recipe {
     @Lob
     private Byte[] image;
 
+    @Enumerated(value = EnumType.STRING)
+    private Difficulty difficulty;
+
     @OneToOne(cascade = CascadeType.ALL)
     private Note note;
 
+    @ManyToMany
+    @JoinTable(name = "recipe_category",
+            joinColumns = @JoinColumn(name = "recipe_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id"))
+    private Set<Category> categories;
 
     public Long getId() {
         return id;
@@ -87,12 +94,12 @@ public class Recipe {
         this.url = url;
     }
 
-    public String getDrirections() {
-        return drirections;
+    public String getDirections() {
+        return directions;
     }
 
-    public void setDrirections(String drirections) {
-        this.drirections = drirections;
+    public void setDirections(String directions) {
+        this.directions = directions;
     }
 
     public UnitOfMeasure getUnitOfMeasure() {
@@ -111,6 +118,14 @@ public class Recipe {
         this.image = image;
     }
 
+    public Difficulty getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(Difficulty difficulty) {
+        this.difficulty = difficulty;
+    }
+
     public Note getNote() {
         return note;
     }
@@ -127,5 +142,11 @@ public class Recipe {
         this.ingredients = ingredients;
     }
 
+    public Set<Category> getCategories() {
+        return categories;
+    }
 
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
+    }
 }
