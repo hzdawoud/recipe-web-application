@@ -2,5 +2,5 @@ package com.hzdawoud.recipewebapplication.domain;
 
 public enum Difficulty {
 
-    EASY, MODERATE, Hard
+    EASY, MODERATE, KIND_OF_HARD, Hard
 }
