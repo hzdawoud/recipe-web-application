@@ -1,6 +1,6 @@
 package com.hzdawoud.recipewebapplication.domain;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 
