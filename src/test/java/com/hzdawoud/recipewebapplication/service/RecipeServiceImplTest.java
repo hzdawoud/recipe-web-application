@@ -1,5 +1,7 @@
 package com.hzdawoud.recipewebapplication.service;
 
+import com.hzdawoud.recipewebapplication.converter.RecipeCommandToRecipe;
+import com.hzdawoud.recipewebapplication.converter.RecipeToRecipeCommand;
 import com.hzdawoud.recipewebapplication.domain.Recipe;
 import com.hzdawoud.recipewebapplication.repository.RecipeRepository;
 import org.junit.jupiter.api.AfterEach;
@@ -22,10 +24,16 @@ class RecipeServiceImplTest {
     @Mock
     RecipeRepository recipeRepository;
 
+    @Mock
+    RecipeToRecipeCommand recipeToRecipeCommand;
+
+    @Mock
+    RecipeCommandToRecipe recipeCommandToRecipe;
+
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        recipeService = new RecipeServiceImpl(recipeRepository);
+        recipeService = new RecipeServiceImpl(recipeRepository, recipeCommandToRecipe, recipeToRecipeCommand);
     }
 
     @AfterEach

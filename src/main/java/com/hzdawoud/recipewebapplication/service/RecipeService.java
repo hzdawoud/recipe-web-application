@@ -1,5 +1,6 @@
 package com.hzdawoud.recipewebapplication.service;
 
+import com.hzdawoud.recipewebapplication.command.RecipeCommand;
 import com.hzdawoud.recipewebapplication.domain.Recipe;
 import org.springframework.stereotype.Service;
 
@@ -10,4 +11,6 @@ public interface RecipeService {
     Set<Recipe> getRecipes();
 
     Recipe findById(Long id);
+
+    RecipeCommand saveRecipeCommand(RecipeCommand command);
 }
