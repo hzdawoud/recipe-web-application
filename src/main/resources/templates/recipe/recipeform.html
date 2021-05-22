@@ -17,7 +17,7 @@
           th:href="@{/webjars/bootstrap/5.0.1/css/bootstrap.min.css}"></script>
 </head>
 <body>
-<!--/*@thymesVar id="recipe" type="guru.springframework.domain.Recipe"*/-->
+<!--/*@thymesVar id="recipe" type="com.hzdawoud.recipewebapplication.domain.Recipe"*/-->
 <div class="container-fluid" style="margin-top: 20px">
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
@@ -107,7 +107,7 @@
                     <li th:remove="all">1 Teaspoon of chocolate</li>
                     <li th:each="ingredient : ${recipe.ingredients}"
                         th:text="${(ingredient.getAmount() +
-                                        ' ' + ingredient.unitOfMeasure.getDescription() +
+                                        ' ' + ingredient.uom.getDescription() +
                                         ' - ' + ingredient.getDescription())}">1 Teaspoon of Sugar
                     </li>
                   </ul>
