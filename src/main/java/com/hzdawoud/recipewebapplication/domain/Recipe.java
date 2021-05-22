@@ -36,7 +36,7 @@ public class Recipe {
     private Difficulty difficulty;
 
     @OneToOne(cascade = CascadeType.ALL)
-    private Note note;
+    private Note notes;
 
     @ManyToMany
     @JoinTable(name = "recipe_category",
@@ -44,9 +44,9 @@ public class Recipe {
             inverseJoinColumns = @JoinColumn(name = "category_id"))
     private Set<Category> categories = new HashSet<>();
 
-    public void setNote(Note note) {
-        this.note = note;
-        note.setRecipe(this);
+    public void setNote(Note notes) {
+        this.notes = notes;
+        notes.setRecipe(this);
     }
 
     public Recipe addIngredient (Ingredient ingredient) {
